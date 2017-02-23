@@ -12,6 +12,12 @@ class Person : NSObject
 {
     var name = ""
     var moneyOwed = 0
-    var date = NSDateComponents()
-    
+    //var date = NSDateComponents()
+    init(Name: String, MoneyOwed: Int)
+    {
+        super.init()
+        
+        name = Name
+        moneyOwed = MoneyOwed
+    }
 }
