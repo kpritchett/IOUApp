@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate
     {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let persona = persons[indexPath.row]
-        cell.textLabel!.text = "\(persona.name)" + ",  " + "\(persona.moneyOwed)"
+        cell.textLabel!.text = "\(persona.name)" + " owes $" + "\(persona.moneyOwed)"
         
         return cell
     }
@@ -39,17 +39,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate
             nameTextField.placeholder = "Person Name"
         }
         myAlert.addTextField{ (moneyTextField) -> Void in
-            moneyTextField.placeholder = "Money Owed To"
+            moneyTextField.placeholder = "Money Owed"
         }
-        myAlert.addTextField{ (OwedTextField) -> Void in
-            OwedTextField.placeholder = "Person Owed To"
-        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         myAlert.addAction(cancelAction)
         let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) -> Void in
             let nameTF = myAlert.textFields![0]
             let moneyTF = myAlert.textFields![1]
-            let owedTF = myAlert.textFields![2]
             self.persons.append(Person(Name: nameTF.text!, MoneyOwed: Int(moneyTF.text!)!))
             self.myTableView.reloadData()
         }
@@ -57,6 +54,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate
         self.present(myAlert, animated: true, completion: nil)
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let detailVC = segue.destination as! DetailVC
+        let selectedRow = myTableView.indexPathForSelectedRow?.row
+        detailVC.people = persons[selectedRow!]
+    }
+    
 
 }
 
