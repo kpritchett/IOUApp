@@ -57,9 +57,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let detailVC = segue.destination as! DetailVC
-        let selectedRow = myTableView.indexPathForSelectedRow?.row
-        detailVC.people = persons[selectedRow!]
+        if let IndexPath = myTableView.indexPathForSelectedRow
+        {
+            let people = persons[IndexPath.row]
+            let nextController = segue.destination as! DetailVC
+            nextController.people = people
+        
+        }
     }
     
 
