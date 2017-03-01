@@ -11,8 +11,8 @@ import UIKit
 class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
 {
     var people : Person!
-    var moneyArray : [String] = []
-    
+    var moneyArray : [Int] = []
+    var totalMoney = 0
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var moneyTableView: UITableView!
     @IBOutlet weak var totalMoneyLabel: UILabel!
@@ -24,15 +24,15 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
         
         let moneyString = String(people.moneyOwed)
         nameLabel.text = people.name
-        //totalMoneyLabel.text = "Total Owed: $\()"
-        moneyArray.append(moneyString)
+        
+        moneyArray.append(Int(moneyString)!)
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = moneyTableView.dequeueReusableCell(withIdentifier: "moneyCell", for: indexPath)
-        cell.textLabel!.text = (moneyArray)[indexPath.row]
+        cell.textLabel!.text = "\((moneyArray)[indexPath.row])"
         
         return cell
     }
@@ -50,8 +50,13 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
         
         let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) -> Void in
             let myMoneyTextField = myAlert.textFields! [0] as UITextField
-            self.moneyArray.append(myMoneyTextField.text!)
+            self.moneyArray.append(Int(myMoneyTextField.text!)!)
             self.moneyTableView.reloadData()
+            for i in 0 ..< self.moneyArray.count
+            {
+                self.totalMoney += self.moneyArray[i]
+            }
+            self.totalMoneyLabel.text = "Total Owed: $\(self.totalMoney)"
             
         }
         myAlert.addAction(addAction)
