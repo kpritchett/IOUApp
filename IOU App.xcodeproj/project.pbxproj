@@ -199,6 +199,7 @@
 				TargetAttributes = {
 					3F39686D1E5C945400B5740A = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = P6FBSXW32R;
 						ProvisioningStyle = Automatic;
 					};
 					3F3968811E5C945400B5740A = {
@@ -420,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P6FBSXW32R;
 				INFOPLIST_FILE = "IOU App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Things.IOU-App";
@@ -432,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P6FBSXW32R;
 				INFOPLIST_FILE = "IOU App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Things.IOU-App";

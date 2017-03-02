@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate
     {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         let persona = persons[indexPath.row]
-        cell.textLabel!.text = "\(persona.name)" + " owes $" + "\(persona.moneyOwed)"
+        cell.textLabel!.text = "\(persona.name)" + " owes $" + "\(persona.totalMoney)"
         
         return cell
     }
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate
         let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) -> Void in
             let nameTF = myAlert.textFields![0]
             let moneyTF = myAlert.textFields![1]
-            self.persons.append(Person(Name: nameTF.text!, MoneyOwed: Int(moneyTF.text!)!))
+            self.persons.append(Person(Name: nameTF.text!, MoneyOwed: Double(moneyTF.text!)!, TotalMoney: Double(moneyTF.text!)!))
             self.myTableView.reloadData()
         }
         myAlert.addAction(addAction)

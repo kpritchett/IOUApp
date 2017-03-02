@@ -11,13 +11,15 @@ import UIKit
 class Person : NSObject
 {
     var name = ""
-    var moneyOwed = 0
+    var moneyOwed = 0.0
+    var totalMoney = 0.0
     //var date = NSDateComponents()
-    init(Name: String, MoneyOwed: Int)
+    init(Name: String, MoneyOwed: Double, TotalMoney: Double)
     {
         super.init()
         
         name = Name
         moneyOwed = MoneyOwed
+        totalMoney = TotalMoney
     }
 }
