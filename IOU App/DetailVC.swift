@@ -27,7 +27,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
         
         moneyArray.append(Double(moneyString)!)
         
-        people.totalMoney = Double(totalMoneyLabel.text!)!
+       // people.totalMoney = Double(totalMoneyLabel.text!)!
         
     }
     
