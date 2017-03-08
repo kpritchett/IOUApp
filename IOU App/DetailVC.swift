@@ -18,6 +18,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
     @IBOutlet weak var totalMoneyLabel: UILabel!
     
     
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
         
         moneyArray.append(Double(moneyString)!)
         
-       // people.totalMoney = Double(totalMoneyLabel.text!)!
+       
         
     }
     
@@ -43,6 +44,17 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
     {
         return moneyArray.count
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
+            moneyArray.remove(at: indexPath.row)
+            
+            moneyTableView.reloadData()
+        }
+    }
+    
     
     @IBAction func addButtonTapped(_ sender: UIButton)
     {
@@ -65,4 +77,15 @@ class DetailVC: UIViewController, UITableViewDataSource, UITabBarDelegate
       self.present(myAlert, animated: true, completion: nil)
     }
     
+    @IBAction func editingButtonTapped(_ sender: UIButton)
+    {
+        moneyTableView.isEditing = !moneyTableView.isEditing
+        
+        self.people.totalMoney = self.moneyArray.reduce(0, +)
+        self.totalMoneyLabel.text = "Total Owed: $\(self.people.totalMoney)"
+    }
+    @IBAction func saveButtonTapped(_ sender: UIButton)
+    {
+        people.totalMoney = people.totalMoney
+    }
 }
